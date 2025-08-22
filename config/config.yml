@@ -1,0 +1,89 @@
+mqtt:
+  enabled: false
+
+go2rtc:
+  streams:
+    living_room:
+      - rtsp://guestacc:FrigateGuest@192.168.1.18:554/stream1 # <- stream which supports video & aac audio.
+      - rtsp://guestacc:FrigateGuest@192.168.1.18:554/stream2 # <- stream which supports video & aac audio.
+    bed_room:
+      - rtsp://guestacc:FrigateGuest@192.168.1.14:554/stream1 # <- stream which supports video & aac audio.
+      - rtsp://guestacc:FrigateGuest@192.168.1.14:554/stream2 # <- stream which supports video & aac audio.
+    yard:
+      - rtsp://guestacc:FrigateGuest@192.168.1.21:554/stream1 # <- stream which supports video & aac audio.
+      - rtsp://guestacc:FrigateGuest@192.168.1.21:554/stream2 # <- stream which supports video & aac audio.
+
+cameras:
+  living_room: # <------ Name the camera
+    enabled: true
+    ffmpeg:
+      inputs:
+        - path: rtsp://guestacc:FrigateGuest@192.168.1.18:554/stream1 # <----- The stream you want to use for detection
+          input_args: preset-rtsp-restream
+          hwaccel_args: preset-vaapi 
+          roles:
+            - record
+            - detect
+            - audio
+      output_args:
+        record: preset-record-generic-audio-aac
+    live:
+      streams:
+        Main Stream: living_room
+    notifications:
+      enabled: true
+  bed_room: # <------ Name the camera
+    enabled: true
+    ffmpeg:
+      inputs:
+        - path: rtsp://guestacc:FrigateGuest@192.168.1.14:554/stream1 # <----- The stream you want to use for detection
+          input_args: preset-rtsp-restream
+          hwaccel_args: preset-vaapi
+          roles:
+            - record
+            - detect
+            - audio
+      output_args:
+        record: preset-record-generic-audio-aac
+    live:
+      streams:
+        Main Stream: bed_room
+    notifications:
+      enabled: true
+  yard: # <------ Name the camera
+    enabled: true
+    ffmpeg:
+      inputs:
+        - path: rtsp://guestacc:FrigateGuest@192.168.1.21:554/stream1 # <----- The stream you want to use for detection
+          input_args: preset-rtsp-restream
+          hwaccel_args: preset-vaapi
+          roles:
+            - record
+            - detect
+            - audio
+      output_args:
+        record: preset-record-generic-audio-aac
+    live:
+      streams:
+        Main Stream: yard
+    notifications:
+      enabled: true
+detect:
+  enabled: true
+version: 0.16-0
+notifications:
+  enabled: true
+  email: hoanlk@craftzlife.com
+record:
+  enabled: True
+  retain:
+    days: 3
+    mode: motion
+  alerts:
+    retain:
+      days: 30
+      mode: motion
+  detections:
+    retain:
+      days: 30
+      mode: motion
