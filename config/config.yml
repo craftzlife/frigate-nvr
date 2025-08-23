@@ -73,6 +73,7 @@ notifications:
   email: hoanlk@craftzlife.com
 record:
   enabled: True
+  sync_recordings: True
   retain:
     days: 30
     mode: motion
