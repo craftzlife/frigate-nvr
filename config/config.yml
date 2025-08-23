@@ -5,13 +5,13 @@ go2rtc:
   streams:
     living_room:
       - rtsp://guestacc:FrigateGuest@192.168.1.13:554/stream1 # <- stream which supports video & aac audio.
-      - "ffmpeg:living_room#audio=aac#hardware"
+      - ffmpeg:living_room#audio=aac#hardware
     bed_room:
       - rtsp://guestacc:FrigateGuest@192.168.1.14:554/stream1 # <- stream which supports video & aac audio.
-      - "ffmpeg:bed_room#audio=aac#hardware"
+      - ffmpeg:bed_room#audio=aac#hardware
     yard:
       - rtsp://guestacc:FrigateGuest@192.168.1.15:554/stream1 # <- stream which supports video & aac audio.
-      - "ffmpeg:yard#audio=aac#hardware"
+      - ffmpeg:yard#audio=aac#hardware
 
 cameras:
   living_room: # <------ Name the camera
@@ -78,16 +78,28 @@ notifications:
   enabled: true
   email: hoanlk@craftzlife.com
 record:
-  enabled: True
-  sync_recordings: True
+  enabled: true
+  sync_recordings: true
   retain:
     days: 30
     mode: motion
   alerts:
     retain:
-      days: 30
+      days: 3
       mode: motion
   detections:
     retain:
       days: 30
       mode: motion
+semantic_search:
+  enabled: false
+  model_size: small
+face_recognition:
+  enabled: false
+  model_size: small
+lpr:
+  enabled: false
+classification:
+  bird:
+    enabled: true
+camera_groups: {}
