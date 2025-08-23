@@ -5,10 +5,13 @@ go2rtc:
   streams:
     living_room:
       - rtsp://guestacc:FrigateGuest@192.168.1.13:554/stream1 # <- stream which supports video & aac audio.
+      - "ffmpeg:living_room#audio=aac#hardware"
     bed_room:
       - rtsp://guestacc:FrigateGuest@192.168.1.14:554/stream1 # <- stream which supports video & aac audio.
+      - "ffmpeg:bed_room#audio=aac#hardware"
     yard:
       - rtsp://guestacc:FrigateGuest@192.168.1.15:554/stream1 # <- stream which supports video & aac audio.
+      - "ffmpeg:yard#audio=aac#hardware"
 
 cameras:
   living_room: # <------ Name the camera
