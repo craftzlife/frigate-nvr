@@ -1,0 +1,10 @@
+config/.exports
+config/.jwt_secret
+config/.timeline
+config/.vacuum
+config/backup.db
+config/frigate.db
+config/frigate.db-shm
+config/frigate.db-wal
+config/notifications.pem
+storage
