@@ -77,7 +77,7 @@ notifications:
 record:
   enabled: True
   retain:
-    days: 3
+    days: 30
     mode: motion
   alerts:
     retain:
