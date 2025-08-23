@@ -14,6 +14,7 @@ cameras:
   living_room: # <------ Name the camera
     enabled: true
     ffmpeg:
+      apple_compatibility: true # <- Adds compatibility with MacOS and iPhone
       inputs:
         - path: rtsp://guestacc:FrigateGuest@192.168.1.13:554/stream1 # <----- The stream you want to use for detection
           input_args: preset-rtsp-restream
@@ -32,6 +33,7 @@ cameras:
   bed_room: # <------ Name the camera
     enabled: true
     ffmpeg:
+      apple_compatibility: true # <- Adds compatibility with MacOS and iPhone
       inputs:
         - path: rtsp://guestacc:FrigateGuest@192.168.1.14:554/stream1 # <----- The stream you want to use for detection
           input_args: preset-rtsp-restream
@@ -50,6 +52,7 @@ cameras:
   yard: # <------ Name the camera
     enabled: true
     ffmpeg:
+      apple_compatibility: true # <- Adds compatibility with MacOS and iPhone
       inputs:
         - path: rtsp://guestacc:FrigateGuest@192.168.1.15:554/stream1 # <----- The stream you want to use for detection
           input_args: preset-rtsp-restream
